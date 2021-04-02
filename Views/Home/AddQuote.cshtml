@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@* well well well, the add quote page. here you can add your own favorite quote and then it will process and save in the database through 
+    the asp-action *@
+@model FinalExamAbbyWake.Models.Quotes 
+<h1>Add Your Favorite Quote</h1>
+<br/>
+<form asp-action="AddQuote" method="post">
+    <label asp-for="Quote">
+        Quote
+    </label>
+    <input type="text" asp-for="Quote" />
+    <br />
+    <label asp-for="AuthorFName">
+        Author First Name
+    </label>
+    <input type="text" asp-for="AuthorFName" />
+    <br />
+    <label asp-for="AuthorLName">
+        Author Last Name
+    </label>
+    <input type="text" asp-for="AuthorLName" />
+    <br />
+    <label asp-for="Date">
+        Date
+    </label>
+    <input type="text" asp-for="Date" />
+    <br />
+    <label asp-for="Subject">
+        Subject
+    </label>
+    <input type="text" asp-for="Subject" />
+    <br />
+    <label asp-for="Citation">
+        Citation
+    </label>
+    <input type="text" asp-for="Citation" />
+    <br />
+    <button class="btn-info"type="submit" id="button" asp-action="AddQuote">Submit Quote</button>
+    <div asp-validation-summary="All"></div>
+
+</form>

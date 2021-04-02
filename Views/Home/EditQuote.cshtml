@@ -1,0 +1,43 @@
+﻿
+
+@model FinalExamAbbyWake.Models.Quotes
+@* You can edit the information here. The only thing that's too different from the add is that it's being passed in
+    and there is a "@Html.HiddenFor(model => model.QuoteId)" which makes sure that it is also being found by the QuoteId and doesn't
+    add a new record but rather updates. *@
+
+<form asp-action="SubmitEditQuote" method="post">
+    @Html.HiddenFor(model => model.QuoteId)
+    <label asp-for="@Model.Quote">
+        Quote
+    </label>
+    <input type="text" asp-for="@Model.Quote" />
+    <br />
+    <label asp-for="@Model.AuthorFName">
+        Author First Name
+    </label>
+    <input type="text" asp-for="@Model.AuthorFName" />
+    <br />
+    <label asp-for="@Model.AuthorLName">
+        Author Last Name
+    </label>
+    <input type="text" asp-for="@Model.AuthorLName" />
+    <br />
+    <label asp-for="@Model.Date">
+        Date
+    </label>
+    <input type="text" asp-for="@Model.Date" />
+    <br />
+    <label asp-for="@Model.Subject">
+        Subject
+    </label>
+    <input type="text" asp-for="@Model.Subject" />
+    <br />
+    <label asp-for="@Model.Citation">
+        Subject
+    </label>
+    <input type="text" asp-for="@Model.Citation" />
+    <br />
+    <button type="submit" id="button">Submit it</button>
+    <div asp-validation-summary="All"></div>
+
+</form>

@@ -1,0 +1,59 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<FinalExamAbbyWake.Models.Quotes>
+
+@* View Quotes here. Just made a simple striped table bc it's cute and I needed to implement bootstrap. take the info being passed and
+    makes it enumerable and then runs through and prints them out in the table. also has the edit and delete button. 
+    Routed through the asp-action items in the tags *@
+<h1 class="text-center">Quotes</h1>
+<br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Quote</th>
+            <th>Author First Name</th>
+            <th>Author Last Name</th>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Citation</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td data-th="Title">@x.Quote</td>
+                <td data-th="Author First Name">@x.AuthorFName</td>
+                <td data-th="Middle Initial">@x.AuthorLName</td>
+                <td data-th="Author Last Name">@x.Date</td>
+                <td data-th="Publisher">@x.Subject</td>
+                <td data-th="Publisher">@x.Citation</td>
+                <td>
+                    <form id="@x.QuoteId" asp-action="RemoveQuote" method="post">
+                        <input type="hidden" asp-for="@x.QuoteId" value="@x.QuoteId" name="david" />
+                        <input type="hidden" asp-for="@x.AuthorFName" value="@x.AuthorFName" name="david" />
+                        <span class="card-text p-1">
+
+                            <button type="submit" class="btn-danger">Delete</button>
+                        </span>
+                    </form>
+                </td>
+                <td>
+                    <form id="@x.QuoteId" asp-action="EditQuote" method="post">
+                        <input type="hidden" asp-for="@x.QuoteId" value="@x.QuoteId" name="Hello" />
+                        <input type="hidden" asp-for="@x.AuthorFName" value="@x.AuthorFName" name="Hello" />
+                        <span class="card-text p-1">
+
+                            <button type="submit" class="btn-info">Edit</button>
+                        </span>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
